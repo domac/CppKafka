@@ -1,0 +1,10 @@
+prefix=/root/tools/tools/lib/librdkafka
+libdir=/root/tools/tools/lib/librdkafka/lib
+includedir=/root/tools/tools/lib/librdkafka/include
+
+Name: librdkafka++
+Description: The Apache Kafka C/C++ library
+Version: 1.4.0
+Cflags: -I${includedir}
+Libs: -L${libdir} -lrdkafka++
+Libs.private: -L../src -lrdkafka -lstdc++

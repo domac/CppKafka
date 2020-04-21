@@ -1,0 +1,2 @@
+#!/bin/sh
+g++  -g -O2 -fPIC  -I/root/tools/tools/lib/librdkafka/include main.cpp -o simple_producer simple/producer.cpp simple/producer.h /root/tools/tools/lib/librdkafka/lib/librdkafka++.a /root/tools/tools/lib/librdkafka/lib/librdkafka.a -lm -lssl -lcrypto   -lcrypto   -lz   -ldl -lpthread -lrt -lstdc++
