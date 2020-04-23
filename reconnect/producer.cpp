@@ -79,8 +79,17 @@ int MsgProducer::init(char *topic, char *brokers, int partition, char *username,
     return ret;
 }
 
-bool MsgProducer::Connect() {
-    //Disconnect();
+bool MsgProducer::Connect(char *topic, char *brokers, int partition, char *username, char *password) {
+
+    if (m_kafka_handle) {
+        Disconnect();
+    }
+
+    if (init(topic, brokers, partition, username, password) != 0) {
+        printf("init....\n");
+        return false;
+    }
+
     char errstr[512] = {0};
     printf("Connect....\n");
     /*创建kafka生产者句柄*/

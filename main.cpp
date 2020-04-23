@@ -16,23 +16,18 @@ int makeProducer() {
     IMsgProducer *producer = ZKafkaProducer::GetInstance();
 
     //172.17.0.3
-    //char *addr = (char *) "172.20.0.3:9092";
+//    char *addr = (char *) "172.20.0.3:9092";
+//    char *user = (char *) "admin";
+
     char *addr = (char *) "172.17.0.3:9092";
-    char *topic = (char *) "mykafka";
-    //char *user = (char *) "admin";
     char *user = NULL;
+
+    char *topic = (char *) "fast_msg_06";
     char *pwd = (char *) "admin123";
 
-    int ret = 0;
-    ret = producer->init(topic, addr, 0, user, pwd);
-    if (ret != 0) {
-        printf("init error");
-        return ret;
-    }
-
-    if (!producer->Connect()) {
+    if (!producer->Connect(topic, addr, 0, user, pwd)) {
         printf("Connect error");
-        return ret;
+        return -1;
     }
 
     while (fgets(test_data, sizeof(test_data), stdin)) {

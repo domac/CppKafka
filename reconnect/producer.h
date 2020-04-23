@@ -12,7 +12,7 @@
 struct IMsgProducer
 {
     virtual int init(char *topic, char *brokers, int partition, char *username, char *password) =0;
-    virtual bool Connect()=0;
+    virtual bool Connect(char *topic, char *brokers, int partition, char *username, char *password)=0;
     virtual bool Disconnect()=0;
     virtual int SendToMqDirect(const std::string& strKey, const char* pData, size_t nDataLen)=0;
 };
@@ -26,7 +26,7 @@ protected:
 public:
     virtual int init(char *topic, char *brokers, int partition, char *username, char *password);
 
-    virtual bool Connect();
+    virtual bool Connect(char *topic, char *brokers, int partition, char *username, char *password);
     virtual bool Disconnect();
     virtual int SendToMqDirect(const std::string& strKey, const char* pData, size_t nDataLen);
 
